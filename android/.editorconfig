@@ -1,3 +1,26 @@
+root=true
+
 # Windows files
 [*.bat]
 end_of_line = crlf
+
+[*.{ts,js,tsx,jsx}]
+indent_size=2
+indent_style=space
+
+[*.{xml,config,props,targets,nuspec,resx,ruleset,vsixmanifest,vsct,runsettings}]
+indent_size=2
+indent_style=space
+max_line_length=1000
+
+[*.{json,json5,*rc,watchmanconfig,code-snippets}]
+indent_size=2
+indent_style=space
+max_line_length=1000
+
+[*.md]
+trim_trailing_whitespace=false
+
+[*.gradle]
+indent_size=4
+indent_style=space
