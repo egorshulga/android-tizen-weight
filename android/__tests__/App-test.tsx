@@ -2,13 +2,13 @@
  * @format
  */
 
-import 'react-native';
-import React from 'react';
-import App from '../App';
+import 'react-native'
+import React from 'react'
+import { AppView } from '../source/AppView'
 
 // Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
+import renderer from 'react-test-renderer'
 
 it('renders correctly', () => {
-  renderer.create(<App />);
-});
+  renderer.create(<AppView />)
+})

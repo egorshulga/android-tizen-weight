@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "lint:fix",
+			"problemMatcher": [
+				"$eslint-stylish"
+			],
+			"label": "npm: lint:fix",
+			"detail": "eslint --cache --fix --ext .js,.jsx,.ts,.tsx ."
+		},
+		{
+			"type": "npm",
+			"script": "toggle-debug",
+			"problemMatcher": [],
+			"label": "npm: toggle-debug",
+			"detail": "adb shell input keyevent KEYCODE_MENU KEYCODE_DPAD_DOWN KEYCODE_DPAD_DOWN KEYCODE_DPAD_DOWN KEYCODE_ENTER && adb shell input tap 300 150"
+		}
+	]
+}
