@@ -43,13 +43,12 @@
       "})",
     ]
   },
-	"TS Stateful class": {
+	"TS ObservableObject class": {
 		"prefix": "tssc",
-		"description": "React Native component definition",
 		"body": [
-			"import { Stateful } from 'reactronic'",
+			"import { ObservableObject } from 'reactronic'",
 			"",
-			"export class $TM_FILENAME_BASE extends Stateful {",
+			"export class $TM_FILENAME_BASE extends ObservableObject {",
 			"  $0",
 			"}",
 			"",

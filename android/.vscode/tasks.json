@@ -38,6 +38,13 @@
 			"problemMatcher": [],
 			"label": "npm: clean",
 			"detail": "npm run packager:clean && npm run android:clean"
+		},
+		{
+			"type": "npm",
+			"script": "packager:clean",
+			"problemMatcher": [],
+			"label": "npm: packager:clean",
+			"detail": "run-script-os"
 		}
 	]
 }
