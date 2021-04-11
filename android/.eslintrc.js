@@ -17,7 +17,7 @@ module.exports = {
   ],
   rules: {
     'file-progress/activate': 1,
-    'linebreak-style': ['error', 'unix'],
+    'linebreak-style': ['error', 'windows'],
     'indent': ['error', 2, { 'SwitchCase': 1 }],
     'eol-last': ['error', 'always'],
     'no-multiple-empty-lines': ['error', { max: 2, maxEOF: 0, maxBOF: 0 }],

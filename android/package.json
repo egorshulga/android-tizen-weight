@@ -51,6 +51,7 @@
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "3.1.0",
     "react-native-svg": "12.1.0",
+    "react-native-wheel-picker-android": "^2.0.6",
     "reactronic": "0.21.120",
     "rn-lineawesomeicons": "0.0.3"
   },
