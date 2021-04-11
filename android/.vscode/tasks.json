@@ -16,6 +16,28 @@
 			"problemMatcher": [],
 			"label": "npm: toggle-debug",
 			"detail": "adb shell input keyevent KEYCODE_MENU KEYCODE_DPAD_DOWN KEYCODE_DPAD_DOWN KEYCODE_DPAD_DOWN KEYCODE_ENTER && adb shell input tap 300 150"
+		},
+		{
+			"type": "npm",
+			"script": "start:prepare",
+			"problemMatcher": [],
+			"label": "npm: start:prepare",
+			"detail": "adb reverse tcp:8081 tcp:8081",
+			"presentation": {
+				"echo": true,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": false
+			}
+		},
+		{
+			"type": "npm",
+			"script": "clean",
+			"problemMatcher": [],
+			"label": "npm: clean",
+			"detail": "npm run packager:clean && npm run android:clean"
 		}
 	]
 }

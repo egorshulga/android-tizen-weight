@@ -30,7 +30,7 @@
         "${workspaceFolder}/.vscode/**/*.js",
         "<node_internals>/**/*.js"
       ],
-      "preLaunchTask": "Clean Android Build",
+      "preLaunchTask": "npm: clean",
       "env": {
         "ENV": "dev",
       },
