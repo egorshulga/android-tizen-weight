@@ -1,55 +1,65 @@
 import { range } from 'common/array'
+import { autorender } from 'common/autorender'
 import { useApp } from 'models/App'
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { WheelPicker } from 'react-native-wheel-picker-android'
 import Icon from 'rn-lineawesomeicons'
 
 export function WeightPicker(): React.ReactElement {
   const app = useApp()
-  return (
-    <View style={styles.weight}>
-      <View style={styles.integerPart}>
-        <View style={styles.stepButton}>
-          <Icon icon='la-angle-up' height={50} width={50} fill='black' />
+  const weight = app.weight
+  return autorender(() => {
+    return (
+      <View style={styles.weight}>
+        <View style={styles.integerPart}>
+          <Pressable
+            style={styles.stepButton}
+            onPress={() => {
+              weight.incrementInteger()
+            }}
+          >
+            <Icon icon='la-angle-up' height={50} width={50} fill='black' />
+          </Pressable>
+          <WheelPicker
+            data={weight.integerPickerValues}
+            selectedItem={weight.integerIndex}
+            itemTextFontFamily={null as any}
+            selectedItemTextFontFamily={null as any}
+            itemTextSize={42}
+            selectedItemTextSize={42}
+            hideIndicator
+            style={styles.wheel}
+          />
+          <Pressable style={styles.stepButton} onPress={() => weight.decrementInteger()}>
+            <Icon icon='la-angle-down' height={50} width={50} fill='black' />
+          </Pressable>
         </View>
-        <WheelPicker
-          data={range(0, 150).map(x => x.toString())}
-          itemTextFontFamily={null as any}
-          selectedItemTextFontFamily={null as any}
-          itemTextSize={42}
-          selectedItemTextSize={42}
-          hideIndicator
-          style={styles.wheel}
-          initPosition={70}
-        />
-        <View style={styles.stepButton}>
-          <Icon icon='la-angle-down' height={50} width={50} fill='black' />
-        </View>
-      </View>
 
-      <View style={styles.decimalPart}>
-        <View style={styles.stepButton}>
-          <Icon icon='la-angle-up' height={50} width={50} fill='black' />
+        <View style={styles.decimalPart}>
+          <Pressable style={styles.stepButton} onPress={() => weight.incrementDecimal()}>
+            <Icon icon='la-angle-up' height={50} width={50} fill='black' />
+          </Pressable>
+          <WheelPicker
+            data={weight.decimalPickerValues}
+            selectedItem={weight.decimalIndex}
+            itemTextFontFamily={null as any}
+            selectedItemTextFontFamily={null as any}
+            itemTextSize={42}
+            selectedItemTextSize={42}
+            hideIndicator
+            isCyclic
+            style={styles.wheel}
+          />
+          <Pressable style={styles.stepButton} onPress={() => weight.decrementDecimal()}>
+            <Icon icon='la-angle-down' height={50} width={50} fill='black' />
+          </Pressable>
         </View>
-        <WheelPicker
-          data={range(0, 9).map(x => x.toString())}
-          itemTextFontFamily={null as any}
-          selectedItemTextFontFamily={null as any}
-          itemTextSize={42}
-          selectedItemTextSize={42}
-          hideIndicator
-          isCyclic
-          style={styles.wheel}
-        />
-        <View style={styles.stepButton}>
-          <Icon icon='la-angle-down' height={50} width={50} fill='black' />
-        </View>
-      </View>
 
-      <Text style={styles.unit}>kg</Text>
-    </View>
-  )
+        <Text style={styles.unit}>kg</Text>
+      </View>
+    )
+  })
 }
 
 const styles = StyleSheet.create({

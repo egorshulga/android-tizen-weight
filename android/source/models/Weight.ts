@@ -1,5 +1,5 @@
 import { range } from 'common/array'
-import { ObservableObject, unobservable } from 'reactronic'
+import { ObservableObject, transaction, unobservable } from 'reactronic'
 
 export class Weight extends ObservableObject {
   @unobservable readonly integerValues: number[]
@@ -7,7 +7,10 @@ export class Weight extends ObservableObject {
   @unobservable readonly decimalValues: number[]
   @unobservable readonly decimalPickerValues: string[]
 
-  value: number = 60.9
+  private _value: number = 60.9
+
+  get value(): number { return Math.round(this._value * 10) / 10 }
+  set value(value: number) { this._value = value }
 
   constructor() {
     super()
@@ -17,7 +20,26 @@ export class Weight extends ObservableObject {
     this.decimalPickerValues = this.decimalValues.map(x => x.toString())
   }
 
-  get integer(): number { return Math.floor(this.value) }
-  get decimalIndex(): number { return Math.floor((this.value - this.integer) * 10) }
-  get decimal(): number { return Math.floor((this.value - this.integer) * 10) / 10 }
+  get integerIndex(): number { return Math.floor(this.value) }
+  get decimalIndex(): number { return Math.round((this.value - Math.floor(this.value)) * 10) }
+  get decimal(): number { return Math.round((this.value - Math.floor(this.value)) * 10) / 10  }
+
+  incrementInteger(): void {
+    this.value += 1
+  }
+
+  @transaction
+  decrementInteger(): void {
+    this.value -= 1
+  }
+
+  @transaction
+  incrementDecimal(): void {
+    this.value += 0.1
+  }
+
+  @transaction
+  decrementDecimal(): void {
+    this.value -= 0.1
+  }
 }
