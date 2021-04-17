@@ -2,7 +2,7 @@ root=true
 
 # Windows files
 [*.bat]
-end_of_line = crlf
+end_of_line = lf
 
 [*.{ts,js,tsx,jsx}]
 indent_size=2
