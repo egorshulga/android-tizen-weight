@@ -7,10 +7,7 @@ export class Weight extends ObservableObject {
   @unobservable readonly decimalValues: number[]
   @unobservable readonly decimalPickerValues: string[]
 
-  private _value: number = 60.9
-
-  get value(): number { return Math.round(this._value * 10) / 10 }
-  set value(value: number) { this._value = value }
+  value: number = 60.9
 
   constructor() {
     super()
@@ -20,10 +17,11 @@ export class Weight extends ObservableObject {
     this.decimalPickerValues = this.decimalValues.map(x => x.toString())
   }
 
-  get integerIndex(): number { return Math.floor(this.value) }
+  get integer(): number { return Math.floor(Math.round(this.value * 10) / 10) }
   get decimalIndex(): number { return Math.round((this.value - Math.floor(this.value)) * 10) }
-  get decimal(): number { return Math.round((this.value - Math.floor(this.value)) * 10) / 10  }
+  get decimal(): number { return Math.round((this.value - Math.floor(this.value)) * 10) / 10 }
 
+  @transaction
   incrementInteger(): void {
     this.value += 1
   }
@@ -41,5 +39,17 @@ export class Weight extends ObservableObject {
   @transaction
   decrementDecimal(): void {
     this.value -= 0.1
+  }
+
+  @transaction
+  setInteger(value: number): void {
+    const decimal = this.decimal
+    this.value = value + decimal
+  }
+
+  @transaction
+  setDecimal(value: number): void {
+    const integer = this.integer
+    this.value = integer + value / 10
   }
 }

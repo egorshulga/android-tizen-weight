@@ -8,7 +8,6 @@ class AppModel extends ObservableObject {
   constructor() {
     super()
     this.weight = new Weight()
-    debugger
   }
 }
 

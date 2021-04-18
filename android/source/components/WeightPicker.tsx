@@ -1,4 +1,3 @@
-import { range } from 'common/array'
 import { autorender } from 'common/autorender'
 import { useApp } from 'models/App'
 import React from 'react'
@@ -15,29 +14,28 @@ export function WeightPicker(): React.ReactElement {
         <View style={styles.integerPart}>
           <Pressable
             style={styles.stepButton}
-            onPress={() => {
-              weight.incrementInteger()
-            }}
+            onPress={weight.decrementInteger}
           >
             <Icon icon='la-angle-up' height={50} width={50} fill='black' />
           </Pressable>
           <WheelPicker
             data={weight.integerPickerValues}
-            selectedItem={weight.integerIndex}
+            selectedItem={weight.integer}
             itemTextFontFamily={null as any}
             selectedItemTextFontFamily={null as any}
             itemTextSize={42}
             selectedItemTextSize={42}
             hideIndicator
             style={styles.wheel}
+            onItemSelected={weight.setInteger}
           />
-          <Pressable style={styles.stepButton} onPress={() => weight.decrementInteger()}>
+          <Pressable style={styles.stepButton} onPress={weight.incrementInteger}>
             <Icon icon='la-angle-down' height={50} width={50} fill='black' />
           </Pressable>
         </View>
 
         <View style={styles.decimalPart}>
-          <Pressable style={styles.stepButton} onPress={() => weight.incrementDecimal()}>
+          <Pressable style={styles.stepButton} onPress={weight.decrementDecimal}>
             <Icon icon='la-angle-up' height={50} width={50} fill='black' />
           </Pressable>
           <WheelPicker
@@ -50,8 +48,9 @@ export function WeightPicker(): React.ReactElement {
             hideIndicator
             isCyclic
             style={styles.wheel}
+            onItemSelected={weight.setDecimal}
           />
-          <Pressable style={styles.stepButton} onPress={() => weight.decrementDecimal()}>
+          <Pressable style={styles.stepButton} onPress={weight.incrementDecimal}>
             <Icon icon='la-angle-down' height={50} width={50} fill='black' />
           </Pressable>
         </View>
@@ -77,7 +76,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
   },
   unit: {
-    fontSize: 42,
+    fontSize: 36,
   },
 
   stepButton: {
