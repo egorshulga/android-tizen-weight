@@ -1,5 +1,5 @@
 package com.androidweight.common;
 
-public interface OnSuccess {
+public interface OnResult {
     void invoke();
 }

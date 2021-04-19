@@ -1,5 +1,5 @@
 package com.androidweight.common;
 
-public interface OnFailureWith<TResult> {
+public interface OnResultWith<TResult> {
     void invoke(TResult result);
 }
