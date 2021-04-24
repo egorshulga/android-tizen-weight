@@ -40,6 +40,7 @@
       "common/*": ["source/common/*"],
       "components/*": ["source/components/*"],
       "models/*": ["source/models/*"],
+      "native/*": ["source/native/*"],
       "screens/*": ["source/screens/*"]
     },
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
