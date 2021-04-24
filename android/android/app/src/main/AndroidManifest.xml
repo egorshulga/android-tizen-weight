@@ -21,6 +21,10 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+
+    <meta-data
+      android:name="com.samsung.android.health.permission.read"
+      android:value="com.samsung.health.weight" />
   </application>
 
   <queries>

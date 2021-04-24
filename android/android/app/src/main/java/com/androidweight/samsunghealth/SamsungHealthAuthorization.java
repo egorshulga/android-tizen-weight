@@ -18,7 +18,7 @@ public class SamsungHealthAuthorization {
     private final ReactApplicationContext context;
     private HealthDataStore dataStore;
     private HealthConnectionErrorResult resolvableError;
-    private HealthPermissionManager permissionManager;
+    public HealthPermissionManager permissionManager;
 
     static {
         dataStoreConnectionErrors.put(HealthConnectionErrorResult.CONNECTION_FAILURE, "Connection to Samsung Health data framework is not established");
