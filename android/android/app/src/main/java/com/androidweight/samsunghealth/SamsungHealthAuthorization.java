@@ -58,6 +58,7 @@ public class SamsungHealthAuthorization {
                 onConnectionLost.invoke();
             }
         });
+        dataStore.connectService();
     }
 
     public Result resolveConnectionError() {
